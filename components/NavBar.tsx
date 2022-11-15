@@ -15,9 +15,15 @@ const NavBar = () => {
           />
         </Link>
       </div>
-      <div className="nav-item-container">
-        <p>xxxx</p>
-      </div>
+      <Link href="/posts" className="nav-item-container">
+        <p>projects</p>
+      </Link>
+      <Link href="/about" className="nav-item-container">
+        <p>about</p>
+      </Link>
+      <Link href="/contact" className="nav-item-container">
+        <p>contact</p>
+      </Link>
     </nav>
   )
 }

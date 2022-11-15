@@ -2,34 +2,34 @@
 /* eslint-disable react/display-name */
 import { forwardRef } from 'react'
 import { urlFor } from '../lib/sanity'
+import { CategoryProps, ProjectProps } from '../pages/posts'
 import Tag from './Tag'
 
-const Card = forwardRef(({onClick, href, post }, ref) => {
-  const { title, publishedAt, mainImage, username, authorImage, categories } = post
+type CardProps = {
+  post: ProjectProps,
+  href?: string,
+  onClick?: () => void
+}
+
+const Card = forwardRef(({onClick, href, post }:CardProps, ref:any) => {
+  const { _id, title, publishedAt, mainImage, categories } = post
+
+  const url = urlFor(mainImage).toString()
 
   return (
-    <div className="card-container" href={href} onClick={onClick} ref={ref}>
+    <div className="card-container" onClick={onClick} ref={ref} key={_id}>
       <h2>{title}</h2>
       <p>Published on: {new Date(publishedAt).toDateString()}</p>
 
       <img 
         className="main-image"
         alt={title + ' image'}
-        src={urlFor(mainImage)}
+        src={url}
       />
       <hr />
 
-      <div className='info-container'>
-        <p>Posted by: {username}</p>
-        <img
-          className='avatar'
-          alt={username + ' avatar'}
-          src={urlFor(authorImage)}
-        />
-      </div>
-
       <div className='tag-container'>
-        {categories.map((category) => {
+        {categories.map((category: CategoryProps) => {
           return <>
             { category && <Tag title={category.title} key={category.id}/>}
           </>

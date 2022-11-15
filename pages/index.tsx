@@ -4,13 +4,40 @@ import Link from 'next/link'
 import Card from '../components/Card'
 
 import { getClient } from '../lib/sanity.server'
+import { CategoryProps, ProjectProps } from './posts'
 
-const Home = ({ posts }) => {
-  console.log(posts)
+export type SkillsProps = {
+  id: string,
+  title: string,
+  slug: string
+}
+
+type PageProps = {
+  title: string,
+  body: string,
+  mainImage: string,
+  categoriesTitle: string,
+  categoriesSubtitle: string,
+  categories: CategoryProps[],
+  skillsTitle: string,
+  skillsSubtitle: string,
+  skills: SkillsProps[],
+  projectsTitle: string,
+  projectsSubtitle: string,
+  backgroundImag: string,
+}
+
+type Props = {
+  page: PageProps,
+  posts: ProjectProps[]
+}
+
+const Home = ({ page, posts }: Props) => {
+  console.log(page)
   return (
     <div className='dashboard'>
      <Head>
-      <title>Nomad Travel Blog</title>
+      <title>Portfolio</title>
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
      </Head>
 
@@ -37,18 +64,35 @@ export async function getStaticProps({ preview = false }) {
     *[_type == "post" && publishedAt < now()] | order(publishedAt desc) {
     _id,
     title,
-    "username": author->username,
+    subtitle,
     "categories": categories[]->{id, title},
-    "authorImage": author->avatar,
     body,
     mainImage,
     slug,
     publishedAt
   }`)
 
+  const page = await getClient(preview).fetch(groq`
+  *[_type == "home"] {
+  _id,
+  title,
+  body,
+  mainImage,
+  categoriesTitle,
+  categoriesSubtitle,
+  "categories": categories[]->{id, title, description, image, slug},
+  skillsTitle,
+  skillsSubtitle,
+  "skills": skills[]->{id, title, slug},
+  projectsTitle,
+  projectsSubtitle,
+  backgroundImage
+}`)
+
   return {
     props: {
       posts,
+      page
     },
   }
 }
