@@ -30,7 +30,7 @@ const Post = ({ post }) => {
     about: 'about',
     postedAt: '15/11/2022'
   }
-  const { title, categories, body, authorImage, username, about, postedAt } = post
+  const { title, categories, body, authorImage, username, about, postedAt } = post || mockPost
   return (
     <>
       { post && <article className="post-container">
