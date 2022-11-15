@@ -21,6 +21,15 @@ const PostComponents = {
 }
 
 const Post = ({ post }) => {
+  const mockPost = {
+    title: 'Títulos',
+    categories: [{ id: 1, title:'category'}],
+    body: '<p>Lorem ipsum</p>',
+    authorImage: 'https://images.unsplash.com/photo-1542740348-39501cd6e2b4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fHdvbWFufGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=600&q=60',
+    username: 'username',
+    about: 'about',
+    postedAt: '15/11/2022'
+  }
   const { title, categories, body, authorImage, username, about, postedAt } = post
   return (
     <>
