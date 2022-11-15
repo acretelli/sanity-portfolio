@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import groq from "groq"
 
 import Tag from "../../components/Tag"
@@ -19,7 +20,7 @@ const PostComponents = {
   }
 }
 
-const Post = ({ post }: any) => {
+const Post = ({ post }) => {
   const { title, categories, body, authorImage, username, about, postedAt } = post
   return (
     <>
@@ -80,7 +81,7 @@ export async function getStaticPaths() {
   )
 
   return {
-    paths: paths.map((slug: any) => ({ params: { slug} })),
+    paths: paths.map((slug) => ({ params: { slug} })),
     fallback: true
   }
 }

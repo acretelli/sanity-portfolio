@@ -1,3 +1,5 @@
+/* eslint-disable @next/next/no-img-element */
+/* eslint-disable react/display-name */
 import { forwardRef } from 'react'
 import { urlFor } from '../lib/sanity'
 import Tag from './Tag'
@@ -27,7 +29,7 @@ const Card = forwardRef(({onClick, href, post }, ref) => {
       </div>
 
       <div className='tag-container'>
-        {categories.map((category: any) => {
+        {categories.map((category) => {
           return <>
             { category && <Tag title={category.title} key={category.id}/>}
           </>

@@ -5,7 +5,7 @@ import Card from '../components/Card'
 
 import { getClient } from '../lib/sanity.server'
 
-const Home = ({ posts }: any) => {
+const Home = ({ posts }) => {
   console.log(posts)
   return (
     <div className='dashboard'>
@@ -15,7 +15,7 @@ const Home = ({ posts }: any) => {
      </Head>
 
      <div className='post-container'>
-      {posts?.map((post: any) => {
+      {posts?.map((post) => {
         return <Link
           key={post._id}
           href="/posts/[slug]"
