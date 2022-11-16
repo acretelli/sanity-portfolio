@@ -9,7 +9,7 @@ import * as S from "./styles"
 const PostComponents = {
   types: {
     image: ({ value }: any) => {
-      const url = urlFor(value).toString()
+      const url:string = value ? urlFor(value).toString() : ''
       return (
         <img
           className="post-image"
