@@ -2,45 +2,35 @@ import groq from 'groq'
 import Head from 'next/head'
 import Link from 'next/link'
 import Card from '../components/Card'
+import SectionContact from '../components/SectionContact'
 
 import { getClient } from '../lib/sanity.server'
-import { CategoryProps, ProjectProps } from './posts'
 
-export type SkillsProps = {
-  id: string,
-  title: string,
-  slug: string
+export type SocialLinkProps = {
+  image: string,
+  label: string,
+  url: string
 }
 
-type PageProps = {
+export type ContactProps = {
   title: string,
-  body: string,
-  mainImage: string,
-  categoriesTitle: string,
-  categoriesSubtitle: string,
-  categories: CategoryProps[],
-  skillsTitle: string,
-  skillsSubtitle: string,
-  skills: SkillsProps[],
-  projectsTitle: string,
-  projectsSubtitle: string,
-  backgroundImag: string,
+  subtitle: string,
+  socialLinks: SocialLinkProps[],
 }
 
 type Props = {
-  page: PageProps,
-  posts: ProjectProps[]
+  page: ContactProps[]
 }
 
 const Contact = ({ page }: Props) => {
-  console.log(page)
+  
   return (
-    <div className='dashboard'>
+    <div>
      <Head>
       <title>Portfolio | Contact</title>
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
      </Head>
-     <h1>Contact</h1>
+     <SectionContact title={page[0].title} subtitle={page[0].subtitle} socialLinks={page[0].socialLinks}/>
 
     </div>
   )

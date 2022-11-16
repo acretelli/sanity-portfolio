@@ -2,12 +2,15 @@ import groq from 'groq'
 import Head from 'next/head'
 import Link from 'next/link'
 import Card from '../../components/Card'
+import SectionAllProjects from '../../components/SectionAllProjects'
 
 import { getClient } from '../../lib/sanity.server'
 
 export type CategoryProps = {
   id: string,
-  title: string
+  title: string,
+  description: string,
+  image: string
 }
 
 export type SlugProps = {
@@ -18,11 +21,11 @@ export type SlugProps = {
 export type ProjectProps = {
   _id: string,
   title: string,
+  subtitle: string,
   categories: CategoryProps[],
-  body: string,
+  body: any,
   mainImage: string,
-  slug: SlugProps,
-  publishedAt: string
+  slug: SlugProps
 }
 
 export type PageProps = {
@@ -36,30 +39,15 @@ export type Props = {
 }
 
 const Projects = ({ page, posts }: Props) => {
-  console.log(posts[0])
+
   return (
-    <div className='dashboard'>
+    <div>
      <Head>
       <title>Portfolio | Projects</title>
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
      </Head>
 
-    <h1>{page[0].projectsTitle}</h1>
-    <h3>{page[0].projectsSubtitle}</h3>
-     <div className='post-container'>
-
-      {posts?.map((post: ProjectProps) => {
-        return <Link
-          key={post._id}
-          href="/posts/[slug]"
-          as={`posts/${post.slug.current}`}
-          passHref
-        >
-          <Card post={post} />
-        </Link>
-      })}
-
-     </div>
+     <SectionAllProjects title={page[0].projectsTitle} subtitle={page[0].projectsSubtitle} cards={posts} />
     </div>
   )
 }
@@ -70,6 +58,7 @@ export async function getStaticProps({ preview = false }) {
     *[_type == "post" && publishedAt < now()] | order(publishedAt desc) {
     _id,
     title,
+    subtitle,
     "categories": categories[]->{id, title},
     body,
     mainImage,

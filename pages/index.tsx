@@ -2,9 +2,12 @@ import groq from 'groq'
 import Head from 'next/head'
 import Link from 'next/link'
 import Card from '../components/Card'
+import HomeHeader from '../components/HomeHeader'
+import SectionCategories from '../components/SectionCategories'
+import SectionProjects from '../components/SectionProjects'
 
 import { getClient } from '../lib/sanity.server'
-import { CategoryProps, ProjectProps } from './posts'
+import { CategoryProps, ProjectProps } from './projects'
 
 export type SkillsProps = {
   id: string,
@@ -14,6 +17,7 @@ export type SkillsProps = {
 
 type PageProps = {
   title: string,
+  subtitle: string,
   body: string,
   mainImage: string,
   categoriesTitle: string,
@@ -24,36 +28,32 @@ type PageProps = {
   skills: SkillsProps[],
   projectsTitle: string,
   projectsSubtitle: string,
-  backgroundImag: string,
+  backgroundImage: string,
 }
 
 type Props = {
-  page: PageProps,
+  page: PageProps[],
   posts: ProjectProps[]
 }
 
 const Home = ({ page, posts }: Props) => {
-  console.log(page)
+
   return (
-    <div className='dashboard'>
+    <div>
      <Head>
       <title>Portfolio</title>
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
      </Head>
-
-     <div className='post-container'>
-      {posts?.map((post) => {
-        return <Link
-          key={post._id}
-          href="/posts/[slug]"
-          as={`posts/${post.slug.current}`}
-          passHref
-        >
-          <Card post={post} />
-        </Link>
-      })}
-
-     </div>
+     <HomeHeader     
+        title={page[0].title}
+        subtitle={page[0].subtitle}
+        body={page[0].body}
+        skills={page[0].skills}
+        backgroundImage={page[0].backgroundImage}
+        mainImage={page[0].mainImage}
+     />
+     <SectionProjects title={page[0].projectsTitle} subtitle={page[0].projectsSubtitle} cards={posts} />
+      <SectionCategories title={page[0].categoriesTitle} subtitle={page[0].categoriesSubtitle} categories={page[0].categories} />
     </div>
   )
 }
@@ -76,6 +76,7 @@ export async function getStaticProps({ preview = false }) {
   *[_type == "home"] {
   _id,
   title,
+  subtitle,
   body,
   mainImage,
   categoriesTitle,

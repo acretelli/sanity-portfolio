@@ -5,26 +5,15 @@ import Tag from "../../components/Tag"
 import { PortableText } from "@portabletext/react"
 import { urlFor } from "../../lib/sanity"
 import { getClient } from "../../lib/sanity.server"
-import { CategoryProps } from "."
+import { CategoryProps, SlugProps } from "."
 import { GetStaticProps } from "next"
-
-const PostComponents = {
-  types: {
-    image: ({ value }: any) => {
-      const url = urlFor(value).toString()
-      return (
-        <img
-          className="post-image"
-          alt={value.alt || ' '}
-          src={url}
-        />
-      )
-    }
-  }
-}
+import SectionProject from "../../components/SectionProject"
 
 type PostProps = {
+  _id: string
   title:string,
+  subtitle:string,
+  slug:SlugProps,
   categories: CategoryProps[],
   body: any,
   mainImage: string
@@ -37,28 +26,16 @@ type Props = {
 const Post = ({ post }:Props) => {
   return (
     <>
-      { post && <article className="post-container">
-          <h1>{post.title}</h1>
-          <hr />
-          <div className="tag-container">
-            {post.categories?.map((category:CategoryProps) => (
-              category && <>
-                  <Tag key={category.id} title={category.title} />
-              </>
-            ))}
-          </div>
-
-          <PortableText value={post.body} components={PostComponents} />
-
-          <hr />
-
-        </article>}
+      { post && <SectionProject project={post} />}
     </>
   )
 }
 
 const query = groq`*[_type == "post" && slug.current == $slug][0] {
+  _id,
   title,
+  subtitle,
+  slug,
   "categories": categories[]->{id, title},
   body,
   mainImage

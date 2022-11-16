@@ -1,38 +1,49 @@
 import groq from 'groq'
 import Head from 'next/head'
-import Link from 'next/link'
-import Card from '../components/Card'
+import SectionAbout from '../components/SectionAbout'
 
 import { getClient } from '../lib/sanity.server'
-import { CategoryProps, ProjectProps } from './posts'
 
-type PageProps = {
+
+export type CourseProps = {
   title: string,
-  body: string,
+  institution: string,
+  period: string
+}
+
+export type JobProps = {
+  company: string,
+  description: string,
+  location: string,
+  period: string
+}
+
+export type AboutProps = {
+  _id: string,
+  title: string,
+  subtitle: string,
+  body: any,
   mainImage: string,
-  categoriesTitle: string,
-  categoriesSubtitle: string,
-  categories: CategoryProps[],
-  skillsTitle: string,
-  skillsSubtitle: string,
-  projectsTitle: string,
-  projectsSubtitle: string,
-  backgroundImag: string,
+  coursesTitle: string,
+  coursesSubtitle: string,
+  courses: CourseProps[],
+  jobsTitle: string,
+  jobsSubtitle: string,
+  jobs: JobProps[],
 }
 
 type Props = {
-  page: PageProps
+  page: AboutProps[]
 }
 
 const About = ({ page }: Props) => {
-  console.log(page)
   return (
-    <div className='dashboard'>
+    <div>
      <Head>
       <title>Portfolio | About me</title>
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
      </Head>
-     <h1>About me</h1>
+     <SectionAbout page={page} />
 
     </div>
   )
