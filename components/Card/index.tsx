@@ -2,8 +2,7 @@
 /* eslint-disable react/display-name */
 import { forwardRef } from 'react'
 import { urlFor } from '../../lib/sanity'
-import { CategoryProps, ProjectProps } from '../../pages/projects'
-import Button from '../Button'
+import { ProjectProps } from '../../pages/projects'
 import Tag from '../Tag'
 
 import * as S from './styles'
@@ -14,23 +13,22 @@ type CardProps = {
 }
 
 const Card = forwardRef(({onClick, project }:CardProps, ref:any) => {
-  const { _id, title, subtitle, mainImage, categories } = project
+  const { _id, title, subtitle, mainImage, skills } = project
 
   const url = urlFor(mainImage).toString()
 
   return (
     <S.Card onClick={onClick} ref={ref} key={_id}>
       <S.CardImage
-        className="main-image"
         alt={title + ' image'}
         src={url}
       />
       <S.CardTitle>{title}</S.CardTitle>
       
       <S.CardSkillsWrapper>
-        {categories.map((category: CategoryProps) => {
+        {skills?.map((skill, i) => {
           return <>
-            { category && <Tag title={category.title} key={category.id}/>}
+            { skill && <Tag title={skill.title} key={i}/>}
           </>
         })}
       </S.CardSkillsWrapper>

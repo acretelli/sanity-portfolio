@@ -2,8 +2,10 @@
 import { PortableText } from "@portabletext/react"
 import { urlFor } from "../../lib/sanity"
 import { ProjectProps } from "../../pages/projects"
+
 import Button from "../Button"
 import Tag from "../Tag"
+
 import * as S from "./styles"
 
 const PostComponents = {
@@ -12,7 +14,6 @@ const PostComponents = {
       const url:string = value ? urlFor(value).toString() : ''
       return (
         <img
-          className="post-image"
           alt={value.alt || ' '}
           src={url}
         />
@@ -30,17 +31,18 @@ const SectionProject = ({ project }: Props) => {
     <S.Wrapper>
           <S.Title>{project.title}</S.Title>
           <S.TagsContainer>
-            {project.categories?.map((category) => (
-              category && <>
-                  <Tag key={category.id} title={category.title} />
-              </>
+            {project.skills?.map((skill, i) => (
+              skill && <div key={i}>
+                  <Tag title={skill.title} />
+              </div>
             ))}
           </S.TagsContainer>
           <S.TexBlock>
             <PortableText value={project.body} components={PostComponents} />
           </S.TexBlock>
-
-          <Button href="/projects">Back to Projects</Button>
+          <S.ButtonWrapper>
+            <Button href="/projects">Back to Projects</Button>
+          </S.ButtonWrapper>
     </S.Wrapper>
   )
 }

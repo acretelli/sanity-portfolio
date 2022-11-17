@@ -33,7 +33,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
       }}
     />
     <GlobalStyle />
-      <div className='app-container'>
+      <div>
         <Header />
         <Component {...pageProps} />
         <Footer />

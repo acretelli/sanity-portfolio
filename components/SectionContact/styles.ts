@@ -25,6 +25,7 @@ export const SocialLinksContainer = styled.div`
   display: flex;
   align-items: flex-start;
   justify-content: center;
+  gap: ${theme.spacings.small};
   margin-bottom: ${theme.spacings.medium};
 `
 

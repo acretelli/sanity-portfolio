@@ -1,12 +1,13 @@
 import groq from 'groq'
 import Head from 'next/head'
-import Link from 'next/link'
-import Card from '../components/Card'
+
 import HomeHeader from '../components/HomeHeader'
 import SectionCategories from '../components/SectionCategories'
+import SectionContact from '../components/SectionContact'
 import SectionProjects from '../components/SectionProjects'
 
 import { getClient } from '../lib/sanity.server'
+import { ContactProps } from './contact'
 import { CategoryProps, ProjectProps } from './projects'
 
 export type SkillsProps = {
@@ -33,11 +34,11 @@ type PageProps = {
 
 type Props = {
   page: PageProps[],
-  posts: ProjectProps[]
+  posts: ProjectProps[],
+  contactPage: ContactProps[],
 }
 
-const Home = ({ page, posts }: Props) => {
-
+const Home = ({ page, posts, contactPage }: Props) => {
   return (
     <div>
      <Head>
@@ -54,6 +55,8 @@ const Home = ({ page, posts }: Props) => {
      />
      <SectionProjects title={page[0].projectsTitle} subtitle={page[0].projectsSubtitle} cards={posts} />
       <SectionCategories title={page[0].categoriesTitle} subtitle={page[0].categoriesSubtitle} categories={page[0].categories} />
+     <SectionContact title={contactPage[0].title} subtitle={contactPage[0].subtitle} socialLinks={contactPage[0].socialLinks}/>
+
     </div>
   )
 }
@@ -66,6 +69,7 @@ export async function getStaticProps({ preview = false }) {
     title,
     subtitle,
     "categories": categories[]->{id, title},
+    "skills": skills[]->{title, slug},
     body,
     mainImage,
     slug,
@@ -84,16 +88,25 @@ export async function getStaticProps({ preview = false }) {
   "categories": categories[]->{id, title, description, image, slug},
   skillsTitle,
   skillsSubtitle,
-  "skills": skills[]->{id, title, slug},
+  "skills": skills[]->{title, slug},
   projectsTitle,
   projectsSubtitle,
   backgroundImage
 }`)
 
+  const contactPage = await getClient(preview).fetch(groq`
+  *[_type == "contact"] {
+  _id,
+  title,
+  subtitle,
+  "socialLinks": socialLinks[]->{id, label, image, url}
+  }`)
+
   return {
     props: {
       posts,
-      page
+      page,
+      contactPage
     },
   }
 }

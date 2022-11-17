@@ -17,12 +17,12 @@ const SectionCategories = ({ title, subtitle, categories }:Props) => {
       <S.Subtitle>{subtitle}</S.Subtitle>
       
       {categories?.map((category, i) => {
-        const url = urlFor(category.image).toString()
+        const url = category.image ? urlFor(category.image).toString() : ''
         return <S.SkillContainer key={i}>
-          <div>
+          <S.SkillContent>
             <S.SkillTitle>{category.title}</S.SkillTitle>
             <S.SkillText>{category.description}</S.SkillText>
-          </div>
+          </S.SkillContent>
           
           <S.SkillImage
                 alt={title + ' image'}

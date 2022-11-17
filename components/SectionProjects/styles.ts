@@ -22,3 +22,7 @@ export const CardsContainer = styled.div`
   flex-wrap: wrap;
   gap: ${theme.spacings.small};
 `
+
+export const ButtonWrapper = styled.div`
+  margin: ${theme.spacings.medium} auto;
+`

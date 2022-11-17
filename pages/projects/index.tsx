@@ -13,6 +13,11 @@ export type CategoryProps = {
   image: string
 }
 
+export type SkillProps = {
+  id: string,
+  title: string,
+}
+
 export type SlugProps = {
   _type: string,
   current: string
@@ -22,6 +27,7 @@ export type ProjectProps = {
   _id: string,
   title: string,
   subtitle: string,
+  skills: SkillProps[],
   categories: CategoryProps[],
   body: any,
   mainImage: string,

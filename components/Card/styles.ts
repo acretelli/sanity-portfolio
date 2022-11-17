@@ -11,7 +11,7 @@ export const Card = styled.div`
   box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.15);
 
   min-width: 20rem;
-  max-width: 36rem;
+  max-width: 32rem;
 
   text-align: center;
 `
@@ -26,8 +26,9 @@ export const CardText = styled.p`
 `
 
 export const CardImage = styled.img`
-  height: 16rem;
+  height: 20rem;
   border-radius: 0.4rem;
+  object-fit: cover;
 `
 
 export const CardSkillsWrapper = styled.div`

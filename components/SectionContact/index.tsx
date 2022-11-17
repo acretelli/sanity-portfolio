@@ -1,6 +1,5 @@
 import { urlFor } from "../../lib/sanity"
 import { ContactProps, SocialLinkProps } from "../../pages/contact"
-import Button from "../Button"
 
 import * as S from "./styles"
 
@@ -22,8 +21,6 @@ const SectionContact = ({ title, subtitle, socialLinks }:ContactProps) => {
             </S.SocialLinkWrapper>
         })}
       </S.SocialLinksContainer>
-      
-      <Button href="/">Back to Home</Button>
     </S.Wrapper>
   )
 }

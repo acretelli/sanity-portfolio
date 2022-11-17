@@ -1,7 +1,7 @@
 import groq from 'groq'
 import Head from 'next/head'
-import Link from 'next/link'
-import Card from '../components/Card'
+
+import Button from '../components/Button'
 import SectionContact from '../components/SectionContact'
 
 import { getClient } from '../lib/sanity.server'
@@ -31,7 +31,7 @@ const Contact = ({ page }: Props) => {
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
      </Head>
      <SectionContact title={page[0].title} subtitle={page[0].subtitle} socialLinks={page[0].socialLinks}/>
-
+     <Button href="/">Back to Home</Button>
     </div>
   )
 }

@@ -3,8 +3,6 @@ import { PortableText } from "@portabletext/react"
 import { urlFor } from "../../lib/sanity"
 import { SkillsProps } from "../../pages"
 
-import { CategoryProps } from "../../pages/projects"
-
 import * as S from "./styles"
 
 const PostComponents = {
@@ -55,9 +53,9 @@ const HomeHeader = ({ title, subtitle, body, skills, backgroundImage, mainImage 
 
       <S.SkillsWrapper>
         {skills.map((skill, i) => {
-          return <>
+          return <div key={i}>
             { skill && <button title={skill.title} key={i}/>}
-          </>
+          </div>
         })}
 
       </S.SkillsWrapper>

@@ -9,7 +9,6 @@ type Props = {
 
 const buttonModifiers = {
   wide: () => css`
-    display: block;
     padding: 0.4rem ${theme.spacings.medium};
 
     ${media.greaterThan('medium')`
@@ -20,6 +19,9 @@ const buttonModifiers = {
 
 export const ButtonWrapper = styled.a<Props>`
   ${({ wide }) => css`
+    display: block;
+    margin: 0 auto;
+    width: fit-content;
     padding: ${theme.spacings.xxsmall};
     background: ${theme.colors.primary};
     border-radius: ${theme.border.radius};

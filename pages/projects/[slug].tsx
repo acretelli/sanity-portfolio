@@ -1,11 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 import groq from "groq"
 
-import Tag from "../../components/Tag"
-import { PortableText } from "@portabletext/react"
-import { urlFor } from "../../lib/sanity"
 import { getClient } from "../../lib/sanity.server"
-import { CategoryProps, SlugProps } from "."
+import { CategoryProps, SkillProps, SlugProps } from "."
 import { GetStaticProps } from "next"
 import SectionProject from "../../components/SectionProject"
 
@@ -14,6 +11,7 @@ type PostProps = {
   title:string,
   subtitle:string,
   slug:SlugProps,
+  skills: SkillProps[],
   categories: CategoryProps[],
   body: any,
   mainImage: string
@@ -37,6 +35,7 @@ const query = groq`*[_type == "post" && slug.current == $slug][0] {
   subtitle,
   slug,
   "categories": categories[]->{id, title},
+  "skills": skills[]->{id, title},
   body,
   mainImage
 }`

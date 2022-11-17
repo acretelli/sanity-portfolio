@@ -25,16 +25,21 @@ export const SkillContainer = styled.div`
   flex-direction: column;
   gap: ${theme.spacings.small};
   margin: ${theme.spacings.medium} auto;
-  
+
   ${media.greaterThan('medium')`
     flex-direction: row;
 
     :nth-child(even) {
-      img {
-        order: 0;
+      div {
+        order: 2;
       }
     }
+  
   `}
+`
+
+export const SkillContent = styled.div`
+  width: 50%;
 `
 
 export const SkillTitle = styled.h4`
@@ -47,7 +52,7 @@ export const SkillText = styled.p`
 `
 
 export const SkillImage = styled.img`
-  max-width: 400px;
-  max-height: 280px;
+  width: 48%;
+  height: 280px;
   object-fit: cover;
 `
