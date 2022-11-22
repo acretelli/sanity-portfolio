@@ -27,8 +27,17 @@ type Props = {
 }
 
 const SectionProject = ({ project }: Props) => {
+
+  const url = urlFor(project.mainImage).toString()
+
   return (
     <S.Wrapper>
+      {project.mainImage && 
+        <S.Image
+          src={url}
+          alt={`Image of a mockeup of the project ${project.title}`}
+        />
+      }
           <S.Title>{project.title}</S.Title>
           <S.TagsContainer>
             {project.skills?.map((skill, i) => (

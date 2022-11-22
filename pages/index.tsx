@@ -1,5 +1,6 @@
 import groq from 'groq'
 import Head from 'next/head'
+import Divider from '../components/Divider'
 
 import HomeHeader from '../components/HomeHeader'
 import SectionCategories from '../components/SectionCategories'
@@ -54,7 +55,13 @@ const Home = ({ page, posts, contactPage }: Props) => {
         mainImage={page[0].mainImage}
      />
      <SectionProjects title={page[0].projectsTitle} subtitle={page[0].projectsSubtitle} cards={posts} />
-      <SectionCategories title={page[0].categoriesTitle} subtitle={page[0].categoriesSubtitle} categories={page[0].categories} />
+     
+     <Divider />
+
+     <SectionCategories title={page[0].categoriesTitle} subtitle={page[0].categoriesSubtitle} categories={page[0].categories} />
+     
+     <Divider />
+     
      <SectionContact title={contactPage[0].title} subtitle={contactPage[0].subtitle} socialLinks={contactPage[0].socialLinks}/>
 
     </div>

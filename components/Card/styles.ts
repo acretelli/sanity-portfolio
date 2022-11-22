@@ -1,10 +1,12 @@
 import styled from 'styled-components'
 import theme from '../../styles/theme'
 
-export const Card = styled.div`
+export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  gap: ${theme.spacings.xsmall};
+  align-items: center;
+  justify-content: space-between;
+
   padding: ${theme.spacings.small};
   border-radius: 0.8rem;
   background-color: ${theme.colors.white};
@@ -12,6 +14,14 @@ export const Card = styled.div`
 
   min-width: 20rem;
   max-width: 32rem;
+  height: 484px;
+`
+
+export const CardContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: ${theme.spacings.xsmall};
 
   text-align: center;
 `
@@ -37,4 +47,19 @@ export const CardSkillsWrapper = styled.div`
   justify-content: center;
   flex-wrap: wrap;
   gap: ${theme.spacings.xxsmall};
+`
+
+export const Link = styled.span`
+  display: block;
+  margin: 0 auto;
+  width: fit-content;
+  padding: ${theme.spacings.xxsmall};
+  background: ${theme.colors.primary};
+  border-radius: ${theme.border.radius};
+  color: ${theme.colors.black};
+  font-size: ${theme.font.sizes.xsmall};
+  text-decoration: none;
+  text-align: center;
+  white-space: nowrap;
+  transition: background 0.3s ease-in-out;
 `

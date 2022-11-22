@@ -31,7 +31,7 @@ const SectionCategories = ({ title, subtitle, categories }:Props) => {
         </S.SkillContainer>
       })}
 
-      <Button href="/projects">My projects</Button>
+      <Button href="/projects">Check out my projects</Button>
 
     </S.Wrapper>
   )

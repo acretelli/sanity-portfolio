@@ -21,14 +21,7 @@ const SectionProjects = ({ title, subtitle, cards }:Props) => {
      <S.CardsContainer>
       {cards?.map((card, i) => {
         if (i < 3) {
-          return <Link
-            key={card._id}
-            href="/projects/[slug]"
-            as={`projects/${card.slug.current}`}
-            passHref
-          >
-            <Card project={card} />
-          </Link>
+          return <Card project={card} key={card._id} />
         }
       })}
      </S.CardsContainer>

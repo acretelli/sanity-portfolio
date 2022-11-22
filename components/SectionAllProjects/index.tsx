@@ -19,14 +19,7 @@ const SectionAllProjects = ({ title, subtitle, cards }:Props) => {
     
      <S.CardsContainer>
       {cards?.map((card, i) => {
-        return <Link
-          key={i}
-          href="/projects/[slug]"
-          as={`projects/${card.slug.current}`}
-          passHref
-        >
-          <Card project={card} />
-        </Link>
+        return <Card project={card} key={i} />
       })}
      </S.CardsContainer>
      

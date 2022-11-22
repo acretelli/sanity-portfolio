@@ -23,7 +23,7 @@ const theme = {
   colors: {
     primary: '#EBDEDE',
     primaryHover: '#F5EFEF',
-    secondary: '#3CD3C1',
+    secondary: '#DEEBEA',
     mainBg: '#FAFEFE',
     boxBg: '#FAFAFA',
     texts: '#030517',

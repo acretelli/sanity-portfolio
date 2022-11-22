@@ -16,16 +16,25 @@ export const TagsContainer = styled.div`
 
 export const Title = styled.h1`
   margin: ${theme.spacings.small} auto;
+  font-size: ${theme.font.sizes.xlarge};
   text-align: center;
 `
 
 export const TexBlock = styled.div`
-  max-width: 1024px;
+  max-width: 600px;
   margin: ${theme.spacings.small} auto;
+  padding: ${theme.spacings.xsmall};
 
   p {
-    max-width: 800px;
     margin: ${theme.spacings.xxsmall} auto;
+  }
+
+  p:first-of-type::first-letter {
+    font-size: 4rem;
+    font-weight: ${theme.font.bold};
+    color: ${theme.colors.primary};
+    float: left;
+    margin: -8px 8px;
   }
 
   img {
@@ -33,6 +42,11 @@ export const TexBlock = styled.div`
     margin: ${theme.spacings.xsmall} auto;
     object-fit: cover;
   }
+`
+
+export const Image = styled.img`
+  height: 200px;
+  object-fit: cover;
 `
 
 export const ButtonWrapper = styled.div`

@@ -19,15 +19,15 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
     </Head>
     <NextSeo
       title="Portfolio"
-      description=""
-      canonical=""
+      description="Hi, I'm Anna! I'm a designer and a developer. This is my portfolio."
+      canonical="https://anna-fernandes-portfolio.vercel.app/"
       openGraph={{
-        url: '',
+        url: 'https://anna-fernandes-portfolio.vercel.app/',
         title:
           'Portfolio',
         description:
-          '',
-        images: [{ url: '' }],
+          "Hi, I'm Anna! I'm a designer and a developer. This is my portfolio.",
+        images: [{ url: 'https://cdn.sanity.io/images/mvtxa8e7/production/0b71c74a942824cd97e56d08b5003c51a46e0178-3200x3200.png' }],
         site_name: 'Portfolio',
         locale: 'pt_BR'
       }}
