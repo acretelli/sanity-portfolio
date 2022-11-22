@@ -32,7 +32,7 @@ export const TexBlock = styled.div`
   p:first-of-type::first-letter {
     font-size: 4rem;
     font-weight: ${theme.font.bold};
-    color: ${theme.colors.primary};
+    color: ${theme.colors.secondaryDark};
     float: left;
     margin: -8px 8px;
   }

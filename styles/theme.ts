@@ -24,6 +24,7 @@ const theme = {
     primary: '#EBDEDE',
     primaryHover: '#F5EFEF',
     secondary: '#DEEBEA',
+    secondaryDark: '#1BD09F',
     mainBg: '#FAFEFE',
     boxBg: '#FAFAFA',
     texts: '#030517',
