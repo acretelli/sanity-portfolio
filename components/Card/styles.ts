@@ -62,4 +62,8 @@ export const Link = styled.span`
   text-align: center;
   white-space: nowrap;
   transition: background 0.3s ease-in-out;
+
+  &:hover {
+    background: ${theme.colors.primaryHover};
+  }
 `
