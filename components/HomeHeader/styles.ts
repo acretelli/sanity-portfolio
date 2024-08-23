@@ -51,9 +51,6 @@ export const Image = styled.img`
   `}
 `
 
-export const SkillsWrapper = styled.div`
-`
-
 export const BackgroundImage = styled.img`
   width: 100vw;
   height: 100vh;

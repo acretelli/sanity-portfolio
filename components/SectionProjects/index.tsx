@@ -14,20 +14,15 @@ type Props = {
 
 const SectionProjects = ({ title, subtitle, cards }:Props) => {
   return (
-    <S.Wrapper>
+    <S.Wrapper id="projects">
       <S.Title>{title}</S.Title>
       <S.Subtitle>{subtitle}</S.Subtitle>
     
      <S.CardsContainer>
       {cards?.map((card, i) => {
-        if (i < 3) {
-          return <Card project={card} key={card._id} />
-        }
+        return <Card project={card} key={card._id} />
       })}
      </S.CardsContainer>
-     <S.ButtonWrapper>
-      <Button href="/projects">All Projects</Button>
-     </S.ButtonWrapper>
     </S.Wrapper>
   )
 }

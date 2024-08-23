@@ -26,20 +26,14 @@ type Props = {
 const SectionAbout = ({ page }: Props) => {
   const url = page[0].mainImage ? urlFor(page[0].mainImage).toString() : ''
   return (
-    <S.Wrapper>
+    <S.Wrapper id="about">
       <S.IntroContainer>
         <S.TextBlock>
           <S.Title>{page[0].title}</S.Title>
           <S.Subtitle>{page[0].subtitle}</S.Subtitle>
           <PortableText value={page[0].body} components={PostComponents} />
         </S.TextBlock>
-        {page[0].mainImage && <S.Image
-          alt={page[0].title + ' image'}
-          src={url}
-        />}
       </S.IntroContainer>
-
-      <S.Division />
 
       <S.ListContainer>
         <S.ListTitle>{page[0].coursesTitle}</S.ListTitle>
@@ -68,8 +62,6 @@ const SectionAbout = ({ page }: Props) => {
             </S.ListItem>
         })}
       </S.ListContainer>
-
-      <Button href="/">Back to Home</Button>
     </S.Wrapper>
   )
 }

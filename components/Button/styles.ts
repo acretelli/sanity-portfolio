@@ -21,7 +21,7 @@ export const ButtonWrapper = styled.a<Props>`
   ${({ wide }) => css`
     display: block;
     margin: 0 auto;
-    width: fit-content;
+    width: max-content;
     padding: ${theme.spacings.xxsmall};
     background: ${theme.colors.primary};
     border-radius: ${theme.border.radius};

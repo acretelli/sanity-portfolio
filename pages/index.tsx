@@ -4,8 +4,10 @@ import Divider from '../components/Divider'
 
 import HomeHeader from '../components/HomeHeader'
 import SectionCategories from '../components/SectionCategories'
-import SectionContact from '../components/SectionContact'
 import SectionProjects from '../components/SectionProjects'
+import SectionAbout from '../components/SectionAbout'
+import SectionContact from '../components/SectionContact'
+import SectionTools from '../components/SectionTools'
 
 import { getClient } from '../lib/sanity.server'
 import { ContactProps } from './contact'
@@ -32,18 +34,45 @@ type PageProps = {
   projectsSubtitle: string,
   backgroundImage: string,
 }
+export type CourseProps = {
+  title: string,
+  institution: string,
+  period: string
+}
+
+export type JobProps = {
+  company: string,
+  description: string,
+  location: string,
+  period: string
+}
+
+export type AboutProps = {
+  _id: string,
+  title: string,
+  subtitle: string,
+  body: any,
+  mainImage: string,
+  coursesTitle: string,
+  coursesSubtitle: string,
+  courses: CourseProps[],
+  jobsTitle: string,
+  jobsSubtitle: string,
+  jobs: JobProps[],
+}
 
 type Props = {
   page: PageProps[],
   posts: ProjectProps[],
+  about: AboutProps[],
   contactPage: ContactProps[],
 }
 
-const Home = ({ page, posts, contactPage }: Props) => {
+const Home = ({ page, posts, about, contactPage }: Props) => {
   return (
     <div>
      <Head>
-      <title>Portfolio</title>
+      <title>Anna Fernandes | Portfolio</title>
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
      </Head>
      <HomeHeader     
@@ -54,14 +83,23 @@ const Home = ({ page, posts, contactPage }: Props) => {
         backgroundImage={page[0].backgroundImage}
         mainImage={page[0].mainImage}
      />
-     <SectionProjects title={page[0].projectsTitle} subtitle={page[0].projectsSubtitle} cards={posts} />
-     
-     <Divider />
 
      <SectionCategories title={page[0].categoriesTitle} subtitle={page[0].categoriesSubtitle} categories={page[0].categories} />
      
      <Divider />
+
+     <SectionTools title={page[0].skillsTitle} subtitle={page[0].skillsSubtitle} skills={page[0].skills} ></SectionTools>
+
+     <Divider />
+
+     <SectionProjects title={page[0].projectsTitle} subtitle={page[0].projectsSubtitle} cards={posts} />
      
+     <Divider />
+     
+     <SectionAbout page={about} />
+     
+     <Divider />
+
      <SectionContact title={contactPage[0].title} subtitle={contactPage[0].subtitle} socialLinks={contactPage[0].socialLinks}/>
 
     </div>
@@ -101,6 +139,22 @@ export async function getStaticProps({ preview = false }) {
   backgroundImage
 }`)
 
+
+const about = await getClient(preview).fetch(groq`
+  *[_type == "about"] {
+  _id,
+  title,
+  subtitle,
+  body,
+  mainImage,
+  coursesTitle,
+  coursesSubtitle,
+  "courses": courses[]->{id, title, institution, period},
+  jobsTitle,
+  jobsSubtitle,
+  "jobs": jobs[]->{id, company, description, location, period},
+}`)
+
   const contactPage = await getClient(preview).fetch(groq`
   *[_type == "contact"] {
   _id,
@@ -113,6 +167,7 @@ export async function getStaticProps({ preview = false }) {
     props: {
       posts,
       page,
+      about,
       contactPage
     },
   }

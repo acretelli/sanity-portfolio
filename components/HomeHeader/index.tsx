@@ -49,16 +49,6 @@ const HomeHeader = ({ title, subtitle, body, skills, backgroundImage, mainImage 
           src={url}
         />
       </S.ContentWrapper>
-
-
-      <S.SkillsWrapper>
-        {skills.map((skill, i) => {
-          return <div key={i}>
-            { skill && <button title={skill.title} key={i}/>}
-          </div>
-        })}
-
-      </S.SkillsWrapper>
     </S.Wrapper>
   )
 }

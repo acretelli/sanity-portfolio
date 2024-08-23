@@ -22,13 +22,13 @@ const Header = () => {
         <Link href="/">
           <S.NavLink>home</S.NavLink>
         </Link>
-        <Link href="/projects">
+        <Link href="#projects">
           <S.NavLink>projects</S.NavLink>
         </Link>
-        <Link href="/about">
+        <Link href="#about">
           <S.NavLink>about</S.NavLink>
         </Link>
-        <Link href="/contact">
+        <Link href="#contact">
           <S.NavLink>contact</S.NavLink>
         </Link>
       </S.Nav>

@@ -35,9 +35,11 @@ const GlobalStyle = createGlobalStyle`
     }
 
     body {
+      max-width: 100vw;
       background-color: #f2f2f2;
       color: #000000;
       font-size: 16px;
+      overflow-x: hidden;
     }
   `}
 `

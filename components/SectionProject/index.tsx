@@ -40,6 +40,7 @@ const SectionProject = ({ project }: Props) => {
       }
           <S.Title>{project.title}</S.Title>
           <S.TagsContainer>
+            <S.TagsHeadline>What tools did I use:</S.TagsHeadline>
             {project.skills?.map((skill, i) => (
               skill && <div key={i}>
                   <Tag title={skill.title} />
@@ -50,7 +51,7 @@ const SectionProject = ({ project }: Props) => {
             <PortableText value={project.body} components={PostComponents} />
           </S.TexBlock>
           <S.ButtonWrapper>
-            <Button href="/projects">Back to Projects</Button>
+            <Button href="/">Go Back</Button>
           </S.ButtonWrapper>
     </S.Wrapper>
   )

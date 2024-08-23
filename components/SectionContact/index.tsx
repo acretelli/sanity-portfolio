@@ -5,7 +5,7 @@ import * as S from "./styles"
 
 const SectionContact = ({ title, subtitle, socialLinks }:ContactProps) => {
   return (
-    <S.Wrapper>
+    <S.Wrapper id="contact">
       <S.Title>{title}</S.Title>
       <S.Subtitle>{subtitle}</S.Subtitle>
 

@@ -27,10 +27,13 @@ const Card = ({ project }:CardProps) => {
         
         <S.CardSkillsWrapper>
           {skills?.map((skill, i) => {
-            return <>
-              { skill && <Tag title={skill.title} key={i}/>}
-            </>
+            if (i < 3) {
+              return <>
+                { skill && <Tag title={skill.title} key={i}/>}
+              </>
+            }
           })}
+          <p>...</p>
         </S.CardSkillsWrapper>
 
         <S.CardText>{subtitle}</S.CardText>

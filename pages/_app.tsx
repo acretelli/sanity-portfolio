@@ -18,17 +18,17 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
       <link rel="apple-touch-icon" href="/img/icon-512.png" />
     </Head>
     <NextSeo
-      title="Portfolio"
-      description="Hi, I'm Anna! I'm a designer and a developer. This is my portfolio."
+      title="Anna Fernandes | Portfolio"
+      description="Hi, I'm Anna! I'm aux/ui designer. This is my portfolio."
       canonical="https://anna-fernandes-portfolio.vercel.app/"
       openGraph={{
         url: 'https://anna-fernandes-portfolio.vercel.app/',
         title:
-          'Portfolio',
+          'Anna Fernandes | Portfolio',
         description:
-          "Hi, I'm Anna! I'm a designer and a developer. This is my portfolio.",
+          "Hi, I'm Anna! I'm aux/ui designer. This is my portfolio.",
         images: [{ url: 'https://cdn.sanity.io/images/mvtxa8e7/production/0b71c74a942824cd97e56d08b5003c51a46e0178-3200x3200.png' }],
-        site_name: 'Portfolio',
+        site_name: 'Anna Fernandes | Portfolio',
         locale: 'pt_BR'
       }}
     />

@@ -8,7 +8,6 @@ export const Wrapper = styled.div`
   flex-direction: column;
 
   max-width: 1024px;
-  min-height: calc(100vh - 160px);
   margin: ${theme.spacings.small}  auto 0 auto;
   text-align: center;
 `

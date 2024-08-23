@@ -14,6 +14,11 @@ export const TagsContainer = styled.div`
   gap: ${theme.spacings.xxsmall};
 `
 
+export const TagsHeadline = styled.h6`
+  margin-right: ${theme.spacings.xxsmall};
+  font-size: ${theme.font.sizes.xsmall};
+`
+
 export const Title = styled.h1`
   margin: ${theme.spacings.small} auto;
   font-size: ${theme.font.sizes.xlarge};
@@ -21,12 +26,36 @@ export const Title = styled.h1`
 `
 
 export const TexBlock = styled.div`
-  max-width: 600px;
   margin: ${theme.spacings.small} auto;
   padding: ${theme.spacings.xsmall};
 
-  p {
+  h2 {
+    max-width: 600px;
+    margin: ${theme.spacings.small} auto;
+    font-size: ${theme.font.sizes.large};
+  }
+
+  h3 {
+    max-width: 600px;
+    margin: ${theme.spacings.small} auto;
+    font-size: ${theme.font.sizes.medium};
+  }
+
+  ul {
+    max-width: 600px;
     margin: ${theme.spacings.xxsmall} auto;
+    list-style: none;
+    list-style-type: none;
+  }
+
+  li {
+    line-height: 160%;
+  }
+
+  p {
+    max-width: 600px;
+    margin: ${theme.spacings.xxsmall} auto;
+    line-height: 160%;
   }
 
   p:first-of-type::first-letter {
@@ -50,7 +79,9 @@ export const Image = styled.img`
 `
 
 export const ButtonWrapper = styled.div`
-  margin: auto;
+  width: 100%;
+  display:flex;
+  justify-content: flex-start;
 `
 
 
