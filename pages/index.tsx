@@ -88,9 +88,9 @@ const Home = ({ page, posts, about, contactPage }: Props) => {
      
      <Divider />
 
-     <SectionTools title={page[0].skillsTitle} subtitle={page[0].skillsSubtitle} skills={page[0].skills} ></SectionTools>
+     {/* <SectionTools title={page[0].skillsTitle} subtitle={page[0].skillsSubtitle} skills={page[0].skills} ></SectionTools> */}
 
-     <Divider />
+     {/* <Divider /> */}
 
      <SectionProjects title={page[0].projectsTitle} subtitle={page[0].projectsSubtitle} cards={posts} />
      
@@ -130,7 +130,7 @@ export async function getStaticProps({ preview = false }) {
   mainImage,
   categoriesTitle,
   categoriesSubtitle,
-  "categories": categories[]->{id, title, description, image, slug},
+  "categories": categories[]->{id, title, description, skills[]->{title, slug}, image, slug},
   skillsTitle,
   skillsSubtitle,
   "skills": skills[]->{title, slug},

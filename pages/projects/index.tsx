@@ -10,6 +10,7 @@ export type CategoryProps = {
   id: string,
   title: string,
   description: string,
+  skills: SkillProps[],
   image: string
 }
 

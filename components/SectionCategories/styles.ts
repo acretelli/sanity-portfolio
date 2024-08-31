@@ -56,3 +56,19 @@ export const SkillImage = styled.img`
   height: 280px;
   object-fit: cover;
 `
+
+export const ToolsWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: ${theme.spacings.xxsmall};
+  margin: ${theme.spacings.small} auto;
+`
+
+export const Tool = styled.div`
+  padding: ${theme.spacings.xxxsmall};
+  background-color: ${theme.colors.secondary};
+  border-radius: 4px;
+  font-size: ${theme.font.sizes.small};
+`

@@ -22,6 +22,14 @@ const SectionCategories = ({ title, subtitle, categories }:Props) => {
           <S.SkillContent>
             <S.SkillTitle>{category.title}</S.SkillTitle>
             <S.SkillText>{category.description}</S.SkillText>
+            <S.ToolsWrapper>
+              {category.skills?.map((skill, i) => {
+                return <>
+                    { skill && <div key={i}><S.Tool>{skill.title}</S.Tool></div> }
+                </>
+              })}
+
+            </S.ToolsWrapper>
           </S.SkillContent>
           
           <S.SkillImage
