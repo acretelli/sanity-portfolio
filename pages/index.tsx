@@ -85,7 +85,7 @@ const Home = ({ page, posts, about, contactPage }: Props) => {
      />
 
   
-     <SectionProjects title={page[0].projectsTitle} subtitle={page[0].projectsSubtitle} cards={posts} />
+    <SectionCategories title={page[0].categoriesTitle} subtitle={page[0].categoriesSubtitle} categories={page[0].categories} />
 
      <Divider />
 
@@ -93,7 +93,8 @@ const Home = ({ page, posts, about, contactPage }: Props) => {
 
      {/* <Divider /> */}
 
-     <SectionCategories title={page[0].categoriesTitle} subtitle={page[0].categoriesSubtitle} categories={page[0].categories} />
+     
+     <SectionProjects title={page[0].projectsTitle} subtitle={page[0].projectsSubtitle} cards={posts} />
      
      <Divider />
      
