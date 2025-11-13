@@ -83,18 +83,16 @@ const Home = ({ page, posts, about, contactPage }: Props) => {
         backgroundImage={page[0].backgroundImage}
         mainImage={page[0].mainImage}
      />
-
   
-    <SectionCategories title={page[0].categoriesTitle} subtitle={page[0].categoriesSubtitle} categories={page[0].categories} />
-
+     <SectionProjects title={page[0].projectsTitle} subtitle={page[0].projectsSubtitle} cards={posts} />
+     
      <Divider />
 
      {/* <SectionTools title={page[0].skillsTitle} subtitle={page[0].skillsSubtitle} skills={page[0].skills} ></SectionTools> */}
 
      {/* <Divider /> */}
 
-     
-     <SectionProjects title={page[0].projectsTitle} subtitle={page[0].projectsSubtitle} cards={posts} />
+     <SectionCategories title={page[0].categoriesTitle} subtitle={page[0].categoriesSubtitle} categories={page[0].categories} />
      
      <Divider />
      
