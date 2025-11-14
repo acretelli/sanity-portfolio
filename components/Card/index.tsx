@@ -18,6 +18,13 @@ const Card = ({ project }:CardProps) => {
 
   return (
     <S.Wrapper>
+      
+      <Link 
+        key={project._id}
+        href={`/projects/[slug]`}
+        as={`/projects/${project.slug.current}`}
+      >
+        
       <S.CardContent>
         <S.CardImage
           alt={title + ' image'}
@@ -38,11 +45,6 @@ const Card = ({ project }:CardProps) => {
 
         <S.CardText>{subtitle}</S.CardText>
       </S.CardContent>
-      <Link 
-        key={project._id}
-        href={`/projects/[slug]`}
-        as={`/projects/${project.slug.current}`}
-      >
         <S.Link>Click here to know more</S.Link>
       </Link>
 

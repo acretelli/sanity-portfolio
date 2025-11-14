@@ -22,6 +22,7 @@ export const CardContent = styled.div`
   flex-direction: column;
   align-items: center;
   gap: ${theme.spacings.xsmall};
+  margin-bottom: ${theme.spacings.xsmall};
 
   text-align: center;
 `
