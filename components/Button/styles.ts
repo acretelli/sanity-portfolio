@@ -23,7 +23,7 @@ export const ButtonWrapper = styled.a<Props>`
     margin: 0 auto;
     width: max-content;
     padding: ${theme.spacings.xxsmall};
-    background: ${theme.colors.primary};
+    background: ${theme.colors.secondary};
     border-radius: ${theme.border.radius};
     color: ${theme.colors.black};
     font-size: ${theme.font.sizes.xsmall};

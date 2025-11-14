@@ -25,7 +25,7 @@ const Card = ({ project }:CardProps) => {
         />
         <S.CardTitle>{title}</S.CardTitle>
         
-        <S.CardSkillsWrapper>
+        {/* <S.CardSkillsWrapper>
           {skills?.map((skill, i) => {
             if (i < 3) {
               return <>
@@ -34,7 +34,7 @@ const Card = ({ project }:CardProps) => {
             }
           })}
           <p>...</p>
-        </S.CardSkillsWrapper>
+        </S.CardSkillsWrapper> */}
 
         <S.CardText>{subtitle}</S.CardText>
       </S.CardContent>
@@ -43,7 +43,7 @@ const Card = ({ project }:CardProps) => {
         href={`/projects/[slug]`}
         as={`/projects/${project.slug.current}`}
       >
-        <S.Link>Check it out</S.Link>
+        <S.Link>Click here to know more</S.Link>
       </Link>
 
     </S.Wrapper>

@@ -14,7 +14,7 @@ export const Wrapper = styled.div`
 
   min-width: 20rem;
   max-width: 32rem;
-  height: 484px;
+  height: 420px;
 `
 
 export const CardContent = styled.div`
@@ -54,7 +54,7 @@ export const Link = styled.span`
   margin: 0 auto;
   width: fit-content;
   padding: ${theme.spacings.xxsmall};
-  background: ${theme.colors.primary};
+  background: ${theme.colors.secondaryDark};
   border-radius: ${theme.border.radius};
   color: ${theme.colors.black};
   font-size: ${theme.font.sizes.xsmall};
@@ -64,6 +64,6 @@ export const Link = styled.span`
   transition: background 0.3s ease-in-out;
 
   &:hover {
-    background: ${theme.colors.primaryHover};
+    background: ${theme.colors.secondary};
   }
 `
