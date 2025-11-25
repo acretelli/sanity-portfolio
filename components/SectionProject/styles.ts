@@ -2,6 +2,11 @@ import styled from 'styled-components'
 import media from 'styled-media-query'
 import theme from '../../styles/theme'
 
+type HeroColorProps = {
+  $startColor?: string | null
+  $endColor?: string | null
+}
+
 export const fadeInUpKeyframes = `
   @keyframes fadeInUp {
     from {
@@ -19,13 +24,13 @@ export const PageWrapper = styled.div`
   margin: 0 auto;
 `
 
-export const Hero = styled.header`
+export const Hero = styled.header<HeroColorProps>`
   display: grid;
   grid-template-columns: repeat(1, minmax(0, 1fr));
   gap: ${theme.spacings.medium} ${theme.spacings.large};
   position: relative;
   color: #f9fafb;
-  background-color: #1e0a31;
+  background-color: ${({ $startColor }) => $startColor || '#1e0a31'};
   overflow: hidden;
 
   ${media.greaterThan('large')`
@@ -33,12 +38,22 @@ export const Hero = styled.header`
   `}
 `
 
-export const HeroGradient = styled.div`
+export const HeroGradient = styled.div<HeroColorProps>`
   position: absolute;
   inset: 0;
-  background-image:
-    radial-gradient(circle at 10% 20%, rgba(108, 45, 179, 0.45) 0%, transparent 40%),
-    radial-gradient(circle at 80% 70%, rgba(139, 92, 246, 0.35) 0%, transparent 50%);
+  
+  background-image: ${({ $startColor, $endColor }) => `
+    radial-gradient(
+      circle at 10% 20%,
+      ${$startColor || 'rgba(108, 45, 179, 0.45)'} 0%,
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at 80% 70%,
+      ${$endColor || 'rgba(139, 92, 246, 0.35)'} 0%,
+      transparent 50%
+    )
+  `};
   z-index: 0;
 `
 
@@ -47,7 +62,6 @@ export const HeroNoise = styled.div`
   inset: 0;
   opacity: 0.06;
   pointer-events: none;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 600 600' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 `
 
 export const HeroInner = styled.div`

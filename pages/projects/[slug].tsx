@@ -47,6 +47,8 @@ export interface SlugProps {
 export interface PostProps {
   _id: string
   title: string
+  heroColorStart?: string
+  heroColorEnd?: string
   subtitle?: string
   role?: string
   company?: string
@@ -82,6 +84,8 @@ const postQuery = groq`*[_type == "post" && slug.current == $slug][0]{
   _id,
   title,
   subtitle,
+  heroColorStart,
+  heroColorEnd,
   role,
   company,
   platform,

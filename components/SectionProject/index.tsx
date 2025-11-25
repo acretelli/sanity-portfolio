@@ -14,6 +14,8 @@ const SectionProject = ({ project, nextSlug }: SectionProjectProps) => {
   const {
     title,
     subtitle,
+    heroColorStart,
+    heroColorEnd,
     role,
     company,
     platform,
@@ -59,7 +61,10 @@ const SectionProject = ({ project, nextSlug }: SectionProjectProps) => {
     <S.PageWrapper>
       {/* HERO */}
       <S.Hero>
-        <S.HeroGradient />
+        <S.HeroGradient
+          $startColor={heroColorStart}
+          $endColor={heroColorEnd}
+        />
         <S.HeroNoise />
         <S.HeroInner>
           <S.HeroTitle>{title}</S.HeroTitle>
