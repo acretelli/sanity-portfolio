@@ -59,8 +59,8 @@ const Header = () => {
         <S.CloseButton onClick={() => setIsOpen(false)}>×</S.CloseButton>
 
         <S.MobileNav>
-          <Link href="/#projects" onClick={() => setIsOpen(false)}>
-            <S.MobileLink active={router.asPath.includes("#projects")}>
+          <Link href="/" onClick={() => setIsOpen(false)}>
+            <S.MobileLink active={isActive("/")}>
               Projects
             </S.MobileLink>
           </Link>
@@ -71,8 +71,8 @@ const Header = () => {
             </S.MobileLink>
           </Link>
 
-          <Link href="/" onClick={() => setIsOpen(false)}>
-            <S.MobileLink active={isActive("/") && !router.asPath.includes("#projects")}>
+          <Link href="https://drive.google.com/file/d/14CaIcqDxjT8VQR4JD2uJDIFGszX-q_5g/view?usp=sharing" onClick={() => setIsOpen(false)}>
+            <S.MobileLink>
               Resume
             </S.MobileLink>
           </Link>
