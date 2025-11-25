@@ -1,7 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import { PortableText } from "@portabletext/react"
 import { urlFor } from "../../lib/sanity"
-import { SkillsProps } from "../../pages"
 
 import * as S from "./styles"
 
@@ -23,31 +22,56 @@ type Props = {
   title: string,
   subtitle: string,
   body: any,
-  skills: SkillsProps[],
   backgroundImage: string,
   mainImage: string
 }
 
-const HomeHeader = ({ title, subtitle, body, skills, backgroundImage, mainImage }: Props) => {
+const HomeHeader = ({ title, subtitle, body, backgroundImage, mainImage }: Props) => {
   const backgroundUrl = urlFor(backgroundImage).toString()
   const url = urlFor(mainImage).toString()
 
   return (
     <S.Wrapper>
-      <S.BackgroundImage
-        alt="Abstract image of a texture for the background"
-        src={backgroundUrl}
-      />
+      {!!backgroundImage.length && (
+        <S.BackgroundImage
+          alt="Abstract image of a texture for the background"
+          src={backgroundUrl}
+          />
+      )}
+
+      <S.HaloGradient />
+
       <S.ContentWrapper>
         <S.TextBlock>
+          <S.Overline>Senior Product Designer · UX/UI Designer</S.Overline>
           <S.Title>{title}</S.Title>
           <S.Subtitle>{subtitle}</S.Subtitle>
-          <PortableText value={body} components={PostComponents} />
+
+          <S.Body>
+            <PortableText value={body} components={PostComponents} />
+          </S.Body>
+
+          <S.HeroActions>
+            <S.PrimaryButton href="#projects">
+              View selected projects
+            </S.PrimaryButton>
+
+            <S.SecondaryLink href="#about">
+              About me
+            </S.SecondaryLink>
+          </S.HeroActions>
         </S.TextBlock>
-        <S.Image
-          alt={title + ' image'}
-          src={url}
-        />
+
+        <S.Visual>
+          <S.Image
+            alt={title + " image"}
+            src={url}
+          />
+          <S.ImageBadge>
+            <strong>10+ years in digital design</strong>
+            <span>20M+ users impacted worldwide</span>
+          </S.ImageBadge>
+        </S.Visual>
       </S.ContentWrapper>
     </S.Wrapper>
   )

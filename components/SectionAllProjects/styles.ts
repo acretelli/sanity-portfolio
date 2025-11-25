@@ -8,6 +8,9 @@ export const Wrapper = styled.div`
   text-align: center;
 `
 
+export const Header = styled.div`
+`
+
 export const Title = styled.h1`
   margin: ${theme.spacings.xxsmall};
 `

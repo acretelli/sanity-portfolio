@@ -1,8 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 import { PortableText } from "@portabletext/react"
+import Link from "next/link"
 import { urlFor } from "../../lib/sanity"
 import { AboutProps } from "../../pages/about"
-import Button from "../Button"
 import * as S from "./styles"
 
 const PostComponents = {
@@ -24,44 +24,74 @@ type Props = {
 }
 
 const SectionAbout = ({ page }: Props) => {
-  const url = page[0].mainImage ? urlFor(page[0].mainImage).toString() : ''
+  const data = page[0]
+  const url = data.mainImage ? urlFor(data.mainImage).toString() : ''
+
   return (
     <S.Wrapper id="about">
       <S.IntroContainer>
         <S.TextBlock>
-          <S.Title>{page[0].title}</S.Title>
-          <S.Subtitle>{page[0].subtitle}</S.Subtitle>
-          <PortableText value={page[0].body} components={PostComponents} />
+          <S.Overline>About me</S.Overline>
+          <S.Title>{data.title}</S.Title>
+          <S.Subtitle>{data.subtitle}</S.Subtitle>
+
+          <S.Body>
+            <PortableText value={data.body} components={PostComponents} />
+          </S.Body>
+
+          <S.ResumeCta
+            href="https://drive.google.com/file/d/14CaIcqDxjT8VQR4JD2uJDIFGszX-q_5g/view?usp=sharing"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Download resume
+          </S.ResumeCta>
         </S.TextBlock>
+
+        {url && (
+          <S.Image
+            src={url}
+            alt="A photo of Anna"
+          />
+        )}
       </S.IntroContainer>
 
       <S.ListContainer>
-        <S.ListTitle>{page[0].coursesTitle}</S.ListTitle>
-        <S.ListSubtitle>{page[0].coursesSubtitle}</S.ListSubtitle>
-        {page[0]?.courses.map((course, i) => {
-          return <S.ListItem key={i}>
-            <div>
-              <strong>{course.title}</strong>
-              <p>{course.institution}</p>
-            </div>
-              <p>{course.period}</p>
-            </S.ListItem>
-        })}
-      </S.ListContainer>
-      <S.ListContainer>
-        <S.ListTitle>{page[0].jobsTitle}</S.ListTitle>
-        <S.ListSubtitle>{page[0].jobsSubtitle}</S.ListSubtitle>
-        {page[0]?.jobs.map((job, i) => {
-          return <S.ListItem key={i}>
+        <S.ListTitle>{data.jobsTitle}</S.ListTitle>
+        <S.ListSubtitle>{data.jobsSubtitle}</S.ListSubtitle>
+
+        {data?.jobs.map((job, i) => (
+          <S.ListItem key={i}>
             <div>
               <strong>{job.company}</strong>
               <p>{job.description}</p>
               <small>{job.location}</small>
             </div>
-              <p>{job.period}</p>
-            </S.ListItem>
-        })}
+            <p>{job.period}</p>
+          </S.ListItem>
+        ))}
       </S.ListContainer>
+
+      <S.ListContainer>
+        <S.ListTitle>{data.coursesTitle}</S.ListTitle>
+        <S.ListSubtitle>{data.coursesSubtitle}</S.ListSubtitle>
+
+        {data?.courses.map((course, i) => (
+          <S.ListItem key={i}>
+            <div>
+              <strong>{course.title}</strong>
+              <p>{course.institution}</p>
+            </div>
+            <p>{course.period}</p>
+          </S.ListItem>
+        ))}
+      </S.ListContainer>
+
+      <S.FooterNav>
+        <Link href="/" legacyBehavior>
+          <a className="footer-link">← Back to home</a>
+        </Link>
+      </S.FooterNav>
     </S.Wrapper>
   )
 }

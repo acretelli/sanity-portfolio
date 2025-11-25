@@ -1,53 +1,41 @@
 /* eslint-disable @next/next/no-img-element */
-/* eslint-disable react/display-name */
 import Link from 'next/link'
 import { urlFor } from '../../lib/sanity'
-import { ProjectProps } from '../../pages/projects'
-import Tag from '../Tag'
-
 import * as S from './styles'
+import type { PostCardProps } from '../../types/post'
 
 type CardProps = {
-  project: ProjectProps
+  project: PostCardProps
 }
 
-const Card = ({ project }:CardProps) => {
-  const { title, subtitle, mainImage, skills } = project
+const Card = ({ project }: CardProps) => {
+  const { _id, title, subtitle, mainImage, slug } = project
 
-  const url = urlFor(mainImage).toString()
+  const imageUrl = mainImage
+    ? urlFor(mainImage).width(800).height(600).url()
+    : ''
 
   return (
-    <S.Wrapper>
-      
-      <Link 
-        key={project._id}
-        href={`/projects/[slug]`}
-        as={`/projects/${project.slug.current}`}
-      >
-        
-      <S.CardContent>
-        <S.CardImage
-          alt={title + ' image'}
-          src={url}
-        />
-        <S.CardTitle>{title}</S.CardTitle>
-        
-        {/* <S.CardSkillsWrapper>
-          {skills?.map((skill, i) => {
-            if (i < 3) {
-              return <>
-                { skill && <Tag title={skill.title} key={i}/>}
-              </>
-            }
-          })}
-          <p>...</p>
-        </S.CardSkillsWrapper> */}
+    <S.Wrapper key={_id}>
+      <Link href={`/projects/${slug.current}`} legacyBehavior>
+        <a className="card-link">
+          {imageUrl && (
+            <S.ImageWrapper>
+              <S.CardImage alt={`${title} image`} src={imageUrl} />
+            </S.ImageWrapper>
+          )}
 
-        <S.CardText>{subtitle}</S.CardText>
-      </S.CardContent>
-        <S.Link>Click here to know more</S.Link>
+          <S.CardContent>
+            <S.CardTitle>{title}</S.CardTitle>
+            {subtitle && <S.CardText>{subtitle}</S.CardText>}
+
+            <S.CtaLink>
+              <span>View case study</span>
+              <span aria-hidden>→</span>
+            </S.CtaLink>
+          </S.CardContent>
+        </a>
       </Link>
-
     </S.Wrapper>
   )
 }

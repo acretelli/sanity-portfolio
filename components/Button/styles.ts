@@ -19,21 +19,16 @@ const buttonModifiers = {
 
 export const ButtonWrapper = styled.a<Props>`
   ${({ wide }) => css`
-    display: block;
-    margin: 0 auto;
-    width: max-content;
-    padding: ${theme.spacings.xxsmall};
-    background: ${theme.colors.secondary};
-    border-radius: ${theme.border.radius};
-    color: ${theme.colors.black};
-    font-size: ${theme.font.sizes.xsmall};
-    text-decoration: none;
-    text-align: center;
-    white-space: nowrap;
-    transition: background 0.3s ease-in-out;
+    display: inline-flex;
+    align-items: center;
+    margin-top: ${theme.spacings.small};
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #111827;
+    cursor: pointer;
 
     &:hover {
-      background: ${theme.colors.primaryHover};
+      color: #6b7280;
     }
 
     ${wide && buttonModifiers.wide()};

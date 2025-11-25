@@ -13,13 +13,13 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
     <ThemeProvider theme={theme}>
     <Head>
-      <meta name="theme-color" content="#06092B" />
+      <meta name="theme-color" content="#6C2DB3" />
       <link rel="shortcut icon" href="/img/icon-512.png" />
       <link rel="apple-touch-icon" href="/img/icon-512.png" />
     </Head>
     <NextSeo
       title="Anna Fernandes | Portfolio"
-      description="Hi, I'm Anna! I'm aux/ui designer. This is my portfolio."
+      description="Hi, I'm Anna! I'm a product designer. This is my portfolio."
       canonical="https://anna-fernandes-portfolio.vercel.app/"
       openGraph={{
         url: 'https://anna-fernandes-portfolio.vercel.app/',
